@@ -1,7 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
 {% block title %}
     COPARÁ - Site de Hospedagem
 {% endblock %}
 
 {% block content %}
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Acomodações</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for acomodacao in acomodacoes %}
+                <div class="col-12 col-md-4">
+                    <div class="card">
+                        <img src="{{ acomodacao.imagem.url }}" class="card-img-top" alt="{{ acomodacao.nome }}">
+                        <div class="card-body">
+                            <p class="card-text">{{ acomodacao.nome }}</p>
+                            <p class="card-text">R$ {{ acomodacao.valor }}</p>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}

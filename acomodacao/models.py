@@ -13,11 +13,21 @@ class Estrela(models.Model):
     def __str__(self):
         return str(self.quantidade) + ' estrelas'
     
+
+class Servico(models.Model):
+    nome = models.CharField(max_length=100)
+    descricao = models.TextField()
+    
+    def __str__(self):
+        return self.nome
+    
 class Acomodacao(models.Model):
     nome = models.CharField(max_length=100)
     descricao = models.TextField()
     capacidade = models.IntegerField()
     imagem = models.ImageField(upload_to='acomodacao/%Y/%m/%d', blank=True)
+    local = models.CharField(max_length=100)
+    servicos = models.ManyToManyField(Servico)
     tipo = models.ForeignKey(TipoAcomodacao, on_delete=models.CASCADE)
     estrelas = models.ForeignKey(Estrela, on_delete=models.CASCADE)
     
@@ -46,6 +56,7 @@ class AcomodacaoQuarto(models.Model):
 
 class Reserva(models.Model):
     acomodacao = models.ForeignKey(Acomodacao, on_delete=models.CASCADE)
+    quartos = models.ManyToManyField(AcomodacaoQuarto)
     data_inicio = models.DateField()
     hora_inicio = models.TimeField(default='14:00:00', blank=True)
     data_fim = models.DateField()

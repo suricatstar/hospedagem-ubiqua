@@ -6,12 +6,25 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">Acomodações</h1>
-            </div>
+    <div class="container-fluid w-100">
+        <div class="d-flex bg-secondary justify-content-between p-4 barraNav">
+            
+                <nav class="nav nav-pills nav-justified">
+                    <a class="nav-item nav-link active" href="#">Ativo</a>
+                    <a class="nav-item nav-link" href="#">Link</a>
+                    <a class="nav-item nav-link" href="#">Link</a>
+                </nav>
+                <div class="bg-warning rounded-circle imgPerfil">
+                    perfil
+                </div>
         </div>
+
+        <div>
+            imagem cop
+        </div>
+        <form>
+            <input class="btn btn-primary" type="text"/>
+        </form>
         <div class="row">
             {% for acomodacao in acomodacoes %}
                 <div class="col-12 col-md-4">
